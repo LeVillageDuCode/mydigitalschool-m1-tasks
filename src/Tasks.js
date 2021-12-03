@@ -2,6 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import './Tasks.css'
 import { v4 as uuidv4 } from 'uuid';
+import Test from './Test';
 
 export default function Tasks() {
 
@@ -36,6 +37,16 @@ export default function Tasks() {
         setTodos([newTask, ...todos])
     }
 
+    function deleteTask(taskId) {
+        console.log(taskId)
+
+        // Que notre nouveau tableau, c'est toutes les tâches
+        // sauf celle qu'on veut supprimer
+        // celle qui a pour id taskId
+
+        const newTodos = todos.filter(task => task.id !== taskId)
+        setTodos(newTodos)
+    }
 
     return (
         <div>
@@ -50,7 +61,14 @@ export default function Tasks() {
                 {todos.map(task => (
                     <li key={task.id}
                         className={task.completed ? "task task-completed" : "task"}
-                    >{task.title}</li>
+                    >
+                        {task.title}
+
+                        <button className="btn btn-primary"
+                            onClick={() => deleteTask(task.id)}>DELETE</button>
+
+                        <Test />
+                    </li>
                 ))}
             </ul>
         </div>
