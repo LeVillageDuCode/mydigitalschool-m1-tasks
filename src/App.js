@@ -6,6 +6,9 @@ import Todos from './pages/Todos'
 import Navbar from './Navbar'
 import TaskDetails from './pages/TaskDetails'
 
+import Users from './pages/Users'
+import UserDetails from './pages/UserDetails'
+
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -18,6 +21,10 @@ function App() {
 
         <Route path="/todos" element={<Todos/>} />
         <Route path="/todos/:taskid" element={<TaskDetails/>} />
+
+        <Route path="/users" element={<Users/>} />
+        <Route path="/users/:userid" element={<UserDetails/>} />
+
       </Routes>
     </div>
   );

@@ -16,7 +16,6 @@ export default function Tasks() {
         .then(res => {
             console.log(res.data)
             setTodos(res.data)
-
         })
     }, [])
 
