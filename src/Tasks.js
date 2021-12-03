@@ -4,6 +4,8 @@ import './Tasks.css'
 import { v4 as uuidv4 } from 'uuid';
 import Test from './Test';
 
+import {Link} from 'react-router-dom';
+
 export default function Tasks() {
 
     const [todos, setTodos] = useState([])
@@ -88,8 +90,10 @@ export default function Tasks() {
                             onChange={() => toggleCompleteTask(task.id)}
                         />
 
-                        <button className="btn btn-primary"
-                            onClick={() => deleteTask(task.id)}>DELETE</button>
+                        <Link to={"/todos/" + task.id} className="btn btn-primary">EN SAVOIR PLUS</Link>
+
+                        <button className="btn btn-danger"
+                            onClick={() => deleteTask(task.id)}>SUPPRIMER</button>
                     </li>
                 ))}
             </ul>
