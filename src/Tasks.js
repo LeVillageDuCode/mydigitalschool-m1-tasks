@@ -48,6 +48,25 @@ export default function Tasks() {
         setTodos(newTodos)
     }
 
+    function toggleCompleteTask(taskId) {
+        console.log("On veut changer le status de la tâche!" + taskId)
+
+        // Faire une copie de toutes nos tâches
+        const currTasks = [...todos];
+        console.log(currTasks);
+
+        // Retrouver notre tâche qu'on veut modifier
+        const index = currTasks.findIndex(task => task.id === taskId)
+        console.log(index)
+
+        // De modifier la valeur de cette tâche
+        // !true -> false     !false -> true
+        currTasks[index].completed = !currTasks[index].completed
+
+        // Remet à jour notre todo grâce à setTodo pour cette nouvelle liste
+        setTodos(currTasks)
+    }
+
     return (
         <div>
             <h1>Tu as {todos.length} tâches actuellement</h1>
@@ -64,10 +83,13 @@ export default function Tasks() {
                     >
                         {task.title}
 
+                        <input type="checkbox"
+                            checked={task.completed}
+                            onChange={() => toggleCompleteTask(task.id)}
+                        />
+
                         <button className="btn btn-primary"
                             onClick={() => deleteTask(task.id)}>DELETE</button>
-
-                        <Test />
                     </li>
                 ))}
             </ul>

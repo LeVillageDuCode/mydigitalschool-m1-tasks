@@ -11,3 +11,6 @@ car.nbWheels
 
 // méthode -> fonction dans un objet
 car.klaxon()
+
+car.nbWheels = 4;
+car["nbWheels"] = 4;
